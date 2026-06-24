@@ -20,7 +20,7 @@ from typing import Iterable, List, Tuple
 
 DEFAULT_TIMEOUT = 0.5
 DEFAULT_DELAY = 0.01
-DEFAULT_WORKERS = 50
+DEFAULT_WORKERS = 10
 
 
 def timestamp() -> str:
