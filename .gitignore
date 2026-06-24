@@ -1,0 +1,13 @@
+# Byte-compiled / cache
+__pycache__/
+
+# Virtual env
+venv/
+.env
+
+# Editor directories
+.vscode/
+.idea/
+
+# MacOS
+.DS_Store
