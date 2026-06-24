@@ -93,7 +93,12 @@ def run_scan(host: str, ports: Iterable[int], timeout: float, delay: float, work
                     print(f"[{timestamp()}] Port {port}: Exception {exc}")
                     continue
                 if is_open:
-                    print(f"[{timestamp()}] Port {p}: OPEN")
+                    # Look up the well-known service name for this port (e.g. 22 -> ssh).
+                    try:
+                        service = socket.getservbyport(p)
+                    except OSError:
+                        service = "unknown"
+                    print(f"[{timestamp()}] Port {p}: OPEN ({service})")
                     open_ports.append(p)
                 else:
                     print(f"[{timestamp()}] Port {p}: closed ({msg})")
@@ -136,3 +141,4 @@ if __name__ == "__main__":
         print(f"[{timestamp()}] Aborting scan for safety.")
         sys.exit(3)
     run_scan(args.host, ports_list, args.timeout, args.delay, args.workers)
+     
