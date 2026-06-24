@@ -3,7 +3,7 @@
 Simple TCP echo server.
 
 Usage:
-    python server.py --host 0.0.0.0 --port 65432
+    python server.py --host 127.0.0.1 --port 65432
 
 The server listens for one client at a time, echoes messages and responds with an acknowledgement.
 Type Ctrl+C in the server terminal to shutdown gracefully.
@@ -14,7 +14,7 @@ import sys
 import time
 from typing import Tuple
 
-DEFAULT_HOST = "0.0.0.0"
+DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 65432
 BUFFER_SIZE = 4096
 
@@ -81,7 +81,7 @@ def run_server(host: str, port: int) -> None:
 
 def parse_args():
     p = argparse.ArgumentParser(description="Simple TCP echo server.")
-    p.add_argument("--host", default=DEFAULT_HOST, help="Host to bind to (default: 0.0.0.0)")
+    p.add_argument("--host", default=DEFAULT_HOST, help="Host to bind to (default: 127.0.0.1)")
     p.add_argument("--port", type=int, default=DEFAULT_PORT, help=f"Port to bind to (default: {DEFAULT_PORT})")
     return p.parse_args()
 
